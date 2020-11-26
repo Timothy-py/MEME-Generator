@@ -10,9 +10,12 @@ class Generator extends Component{
         this.state = {
             topText: '',
             bottomText: '',
-            randomImg: 'http://i.imgflip.com/1bij.jpg',
+            randomImg: '',
             allMemeImgs: []
         }
+
+        this.changeHandler = this.changeHandler.bind(this)
+        this.generator = this.generator.bind(this)
     }
 
     componentDidMount(){
@@ -22,20 +25,61 @@ class Generator extends Component{
         )
         .then(response=>{
             const {memes} = response.data
-            console.log("All Memes Here")
-            console.log(memes[0])
             this.setState({
                 allMemeImgs: memes
             })
         })
         .catch((err)=>{
-            console.log(`NO response ${err}`)
+            console.log(`Error: ${err}`)
+        })
+    }
+
+    changeHandler(event){
+        const {name, value} = event.target
+
+        this.setState({
+            [name]: value
+        })
+    }
+
+    generator(event){
+        event.preventDefault()
+        let randomNum = parseInt(Math.random()*(this.state.allMemeImgs.length))
+        this.setState({
+            randomImg: this.state.allMemeImgs[randomNum].url
         })
     }
 
     render(){
         return(
-            <h2>MEME GENERATOR</h2>
+            <div>
+                <form onSubmit={this.generator}>
+                    <label>
+                        <input 
+                        type="text" 
+                        name="topText" 
+                        value={this.state.topText} 
+                        onChange={this.changeHandler}
+                        placeholder="Top Text" />
+                    </label>
+                    <label>
+                        <input 
+                        type="text" 
+                        name="bottomText" 
+                        value={this.state.bottomText} 
+                        onChange={this.changeHandler}
+                        placeholder="Bottom Text" />
+                    </label>
+
+                    <button>Gen</button>
+                </form>
+
+                <div>
+                    <img src={this.state.randomImg} />
+                    <h2>{this.state.topText}</h2>
+                    <h2>{this.state.bottomText}</h2>
+                </div>
+            </div>
         )
     }
 }
