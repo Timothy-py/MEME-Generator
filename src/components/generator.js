@@ -11,7 +11,8 @@ class Generator extends Component{
             topText: '',
             bottomText: '',
             randomImg: '',
-            allMemeImgs: []
+            allMemeImgs: [],
+            isGenerating: true
         }
 
         this.changeHandler = this.changeHandler.bind(this)
@@ -19,6 +20,7 @@ class Generator extends Component{
     }
 
     componentDidMount(){
+        this.setState({isGenerating: true})
         fetch('https://api.imgflip.com/get_memes')
         .then(response=>
             response.json()
@@ -26,7 +28,8 @@ class Generator extends Component{
         .then(response=>{
             const {memes} = response.data
             this.setState({
-                allMemeImgs: memes
+                allMemeImgs: memes,
+                isGenerating: false
             })
         })
         .catch((err)=>{
@@ -75,7 +78,9 @@ class Generator extends Component{
                 </form>
 
                 <div>
-                    <img src={this.state.randomImg} />
+                    {
+                        (this.state.isGenerating) ? <p>Generating...</p> : <img src={this.state.randomImg} />
+                    }
                     <h2>{this.state.topText}</h2>
                     <h2>{this.state.bottomText}</h2>
                 </div>
