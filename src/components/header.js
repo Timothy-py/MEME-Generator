@@ -4,7 +4,10 @@ import React, {Component} from 'react'
 function Header(params) {
     
     return(
-        <h2>HEADER</h2>
+        <header>
+            <img src={require('cat.jpg')} alt='cat'/>
+            <p>Meme Generator</p>
+        </header>
     )
 
 }

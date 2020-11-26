@@ -7,7 +7,9 @@ class Generator extends Component{
         super()
 
         this.state = {
-            
+            topText: '',
+            bottomText: '',
+            randomImage: 'http://i.imgflip.com/1bij.jpg'
         }
     }
 
