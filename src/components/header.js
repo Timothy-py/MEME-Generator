@@ -1,12 +1,15 @@
 import React, {Component} from 'react'
+import './header.css'
 
 
-function Header(params) {
+function Header() {
     
     return(
         <header>
             {/* <img src={require('cat.jpg')} alt='cat'/> */}
-            <p>Meme Generator</p>
+            <div>
+                <p>Meme Generator</p>
+            </div>
         </header>
     )
 
