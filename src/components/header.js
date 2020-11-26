@@ -5,7 +5,7 @@ function Header(params) {
     
     return(
         <header>
-            <img src={require('cat.jpg')} alt='cat'/>
+            {/* <img src={require('cat.jpg')} alt='cat'/> */}
             <p>Meme Generator</p>
         </header>
     )
