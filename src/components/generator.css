@@ -1,0 +1,36 @@
+.generator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+form {
+  max-width: 70%;
+}
+
+input {
+  margin-top: 1em;
+}
+
+.generated {
+  /* border: 2px solid red; */
+  margin-top: 1em;
+  width: 90%;
+  height: 65vh;
+}
+
+img {
+  width: 20em;
+  height: 25em;
+}
+
+.topText {
+  margin-top: -16em;
+  text-align: center;
+}
+
+.bottomText {
+  margin-top: 13em;
+  text-align: center;
+}

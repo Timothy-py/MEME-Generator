@@ -56,34 +56,35 @@ class Generator extends Component{
 
     render(){
         return(
-            <div>
+            <div className="generator">
                 <form onSubmit={this.generator}>
-                    <label>
-                        <input 
-                        type="text" 
-                        name="topText" 
-                        value={this.state.topText} 
-                        onChange={this.changeHandler}
-                        placeholder="Top Text" />
-                    </label>
-                    <label>
-                        <input 
-                        type="text" 
-                        name="bottomText" 
-                        value={this.state.bottomText} 
-                        onChange={this.changeHandler}
-                        placeholder="Bottom Text" />
-                    </label>
+                    
+                    <input 
+                    type="text" 
+                    name="topText" 
+                    value={this.state.topText} 
+                    onChange={this.changeHandler}
+                    placeholder="Top Text" />
+                    <br/>
+                    <input 
+                    type="text" 
+                    name="bottomText" 
+                    value={this.state.bottomText} 
+                    onChange={this.changeHandler}
+                    placeholder="Bottom Text" />
 
-                    <button>Gen</button>
+                <br/>
+                <button>Generate</button>
                 </form>
 
-                <div>
+                <div className="generated">
                     {
                         (this.state.isGenerating) ? <p>Generating...</p> : <img src={this.state.randomImg} />
                     }
-                    <h2>{this.state.topText}</h2>
-                    <h2>{this.state.bottomText}</h2>
+                    <div className="genTexts">
+                        <h2 className="topText">{this.state.topText}</h2>
+                        <h2 className="bottomText">{this.state.bottomText}</h2>
+                    </div>
                 </div>
             </div>
         )
