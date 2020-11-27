@@ -13,11 +13,15 @@ class Generator extends Component{
             bottomText: '',
             randomImg: '',
             allMemeImgs: [],
-            isGenerating: true
+            isGenerating: true,
+            colorT: 'black',
+            colorB: 'black'
         }
 
         this.changeHandler = this.changeHandler.bind(this)
         this.generator = this.generator.bind(this)
+        this.changeColorT =  this.changeColorT.bind(this)
+        this.changeColorB =  this.changeColorB.bind(this)
     }
 
     componentDidMount(){
@@ -54,7 +58,22 @@ class Generator extends Component{
         })
     }
 
+    changeColorT(event){
+        const {name, value} = event.target
+        this.setState({
+            [name]: value
+        })
+    }
+
+    changeColorB(event){
+        const {name, value} = event.target
+        this.setState({
+            [name]: value
+        })
+    }
+
     render(){
+
         return(
             <div className="generator">
                 <form onSubmit={this.generator}>
@@ -65,6 +84,14 @@ class Generator extends Component{
                     value={this.state.topText} 
                     onChange={this.changeHandler}
                     placeholder="Top Text" />
+                    <select name="colorT" value={this.state.colorT} onChange={this.changeColorT}>
+                        <option>--Pick Color--</option>
+                        <option>red</option>
+                        <option>green</option>
+                        <option>yellow</option>
+                        <option>blue</option>
+                        <option>black</option>
+                    </select>
                     <br/>
                     <input 
                     type="text" 
@@ -72,6 +99,14 @@ class Generator extends Component{
                     value={this.state.bottomText} 
                     onChange={this.changeHandler}
                     placeholder="Bottom Text" />
+                    <select name="colorB" value={this.state.colorB} onChange={this.changeColorB}>
+                        <option>--Pick Color--</option>
+                        <option>red</option>
+                        <option>green</option>
+                        <option>yellow</option>
+                        <option>blue</option>
+                        <option>black</option>
+                    </select>
 
                 <br/>
                 <button>Generate</button>
@@ -82,8 +117,8 @@ class Generator extends Component{
                         (this.state.isGenerating) ? <p>Generating...</p> : <img src={this.state.randomImg} />
                     }
                     <div className="genTexts">
-                        <h2 className="topText">{this.state.topText}</h2>
-                        <h2 className="bottomText">{this.state.bottomText}</h2>
+                        <h2 className="topText" style={{color: this.state.colorT}}>{this.state.topText}</h2>
+                        <h2 className="bottomText" style={{color: this.state.colorB}}>{this.state.bottomText}</h2>
                     </div>
                 </div>
             </div>
