@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import axios from 'axios'
 import './generator.css'
 
 
@@ -114,7 +113,7 @@ class Generator extends Component{
 
                 <div className="generated">
                     {
-                        (this.state.isGenerating) ? <p>Generating...</p> : <img src={this.state.randomImg} />
+                        (this.state.isGenerating) ? <p>Generating...</p> : <img src={this.state.randomImg} alt="" />
                     }
                     <div className="genTexts">
                         <h2 className="topText" style={{color: this.state.colorT}}>{this.state.topText}</h2>
