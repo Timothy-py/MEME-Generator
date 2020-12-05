@@ -19,8 +19,6 @@ class Generator extends Component{
 
         this.changeHandler = this.changeHandler.bind(this)
         this.generator = this.generator.bind(this)
-        this.changeColorT =  this.changeColorT.bind(this)
-        this.changeColorB =  this.changeColorB.bind(this)
     }
 
     componentDidMount(){
@@ -57,19 +55,6 @@ class Generator extends Component{
         })
     }
 
-    changeColorT(event){
-        const {name, value} = event.target
-        this.setState({
-            [name]: value
-        })
-    }
-
-    changeColorB(event){
-        const {name, value} = event.target
-        this.setState({
-            [name]: value
-        })
-    }
 
     render(){
 
@@ -83,7 +68,7 @@ class Generator extends Component{
                     value={this.state.topText} 
                     onChange={this.changeHandler}
                     placeholder="Top Text" />
-                    <select name="colorT" value={this.state.colorT} onChange={this.changeColorT}>
+                    <select name="colorT" value={this.state.colorT} onChange={this.changeHandler}>
                         <option>--Pick Color--</option>
                         <option>red</option>
                         <option>green</option>
@@ -98,7 +83,7 @@ class Generator extends Component{
                     value={this.state.bottomText} 
                     onChange={this.changeHandler}
                     placeholder="Bottom Text" />
-                    <select name="colorB" value={this.state.colorB} onChange={this.changeColorB}>
+                    <select name="colorB" value={this.state.colorB} onChange={this.changeHandler}>
                         <option>--Pick Color--</option>
                         <option>red</option>
                         <option>green</option>
